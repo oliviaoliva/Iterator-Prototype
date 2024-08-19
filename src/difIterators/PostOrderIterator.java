@@ -23,6 +23,7 @@ public class PostOrderIterator<T extends Comparable<T>> implements IteratorInter
     // Retorna o próximo valor na travessia
     @Override
     public T next() {
+
         // Continua enquanto houver nós para visitar
         while (hasNext()) {
             Node<T> currentNode = stack.peek(); // Dá uma olhada no nó no topo da pilha sem removê-lo

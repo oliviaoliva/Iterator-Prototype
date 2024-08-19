@@ -8,16 +8,14 @@ public class MainIterator {
         // com a raiz inicializada com o valor 8.
         BinarySearchTree<Integer> bst = new BinarySearchTree<>(8);
 
-        // Preenche a árvore com diversos valores, adicionando-os de forma que mantenha
-        // a propriedade de uma árvore binária de busca (menores à esquerda, maiores à direita).
         populateTree(bst);
 
-        // Realiza e Mostra as travessias (percurso) em diferentes ordens:
-        // Pré-ordem, Em ordem, Pós-ordem e Ordem por nível (BFS).
-        performTraversal("Pre-order traversal:", bst, "Pre");
-        performTraversal("In-order traversal:", bst, "In");
-        performTraversal("Post-order traversal:", bst, "Post");
-        performTraversal("Level-order traversal:", bst, "Level");
+        // Realiza e Mostra os percursos em diferentes ordens:
+        // Pré-ordem, Em ordem, Pós-ordem e Ordem por nível.
+        performTraversal("Pre-order: ", bst, "Pre");
+        performTraversal("In-order: ", bst, "In");
+        performTraversal("Post-order: ", bst, "Post");
+        performTraversal("Level-order: ", bst, "Level");
 
         // Clona a árvore binária de busca original
         System.out.println("\nCriando clone..........");
@@ -27,9 +25,9 @@ public class MainIterator {
         // Realiza o percurso pré-ordem no clone da árvore e Mostra os resultados.
         performTraversal("Clone pré-ordem:", clone, "Pre");
 
-        // Adiciona um novo valor (2000) ao clone da árvore e Mostra a estrutura modificada.
+        // Adiciona um novo valor (777) ao clone da árvore e Mostra a estrutura modificada.
         System.out.println("Adicionando nó 2000 no clone...");
-        clone.add(2000);
+        clone.add(777);
         System.out.println("Nó adicionado!\n");
 
         // Mostra a travessia pré-ordem da árvore clonada após a adição do novo valor.
@@ -49,16 +47,15 @@ public class MainIterator {
         // Lista de valores a serem inseridos na árvore
         int[] values = {15, 8, 25, 5, 12, 35, 1, 3, 6, 9, 11, 20, 30, 2, 7, 10, 14, 18, 22, 27};
         for (int value : values) {
-            // Adiciona cada valor à árvore.
-            bst.add(value);
+
+            bst.add(value); //Adiciona à árvore.
         }
     }
 
     // Método auxiliar para realizar e exibir diferentes tipos de travessia na árvore.
     private static void performTraversal(String message, BinarySearchTree<Integer> tree, String traversalType) {
-        // Mostra uma mensagem de título para a travessia.
         System.out.println(message);
-        // Cria um iterador baseado no tipo de travessia solicitado (pré-ordem, em ordem, etc.).
+        // Cria um iterador baeasdo no tipo.
         IteratorInterface<Integer> iterator = tree.createIterator(traversalType);
         // Percorre todos os elementos da árvore na ordem definida pelo iterador e os imprime.
         while (iterator.hasNext()) {
