@@ -19,7 +19,7 @@ public class MainIterator {
 
         // Clona a árvore binária de busca original
         System.out.println("\nCriando clone..........");
-        BinarySearchTree<Integer> clone = bst.clone();
+        BinarySearchTree<Integer> clone = bst.getClone();
         System.out.println("Clone criado!\n");
 
         // Realiza o percurso pré-ordem no clone da árvore e Mostra os resultados.

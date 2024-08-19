@@ -27,9 +27,8 @@ public class BinarySearchTree<T extends Comparable<T>> implements Prototype<Bina
         return factory.createIterator(type, this.root);
     }
 
-    // Implementação do método clone do padrão Prototype
     @Override
-    public BinarySearchTree<T> clone() {
+    public BinarySearchTree<T> getClone() {
         BinarySearchTree<T> clone = new BinarySearchTree<>();
         cloneTree(this.root, clone);
         return clone;
@@ -38,8 +37,8 @@ public class BinarySearchTree<T extends Comparable<T>> implements Prototype<Bina
     private void cloneTree(Node<T> node, BinarySearchTree<T> clone) {
         if (node != null) {
             clone.add(node.value); // Adiciona o valor do nó atual na árvore clone
-            cloneTree(node.left, clone); // Clona a subárvore esquerda
-            cloneTree(node.right, clone); // Clona a subárvore direita
+            cloneTree(node.left, clone);
+            cloneTree(node.right, clone);
         }
     }
 

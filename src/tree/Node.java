@@ -1,23 +1,41 @@
 package tree;
 
+
 /**
- * Classe Node com o parametro generito T, que estende Comparable<T>. Isso significa que
+ * Classe Node com o parâmetro genérico T que estende Comparable<T>. Isso significa que
  * o tipo T deve ser comparável a si mesmo, permitindo que os nós sejam organizados de acordo
  * com seus valores.
- * @author Alex Sandro
- *
  * @param <T>
  */
-public class Node<T extends Comparable<T>> {
+public class Node<T extends Comparable<T>> implements Prototype<Node<T>> {
     T value;
     Node<T> left;
     Node<T> right;
 
+    // Construtor padrão
     Node(T value) {
         this.value = value;
         right = null;
         left = null;
     }
+
+    // Construtor de cópia (privado)
+    private Node(Node<T> otherNode) {
+        this.value = otherNode.value;
+        if (otherNode.left != null) {
+            this.left = new Node<>(otherNode.left);
+        }
+        if (otherNode.right != null) {
+            this.right = new Node<>(otherNode.right);
+        }
+    }
+
+    // Implementação do método getClone da interface Prototype
+    @Override
+    public Node<T> getClone() {
+        return new Node<>(this);
+    }
+
     // Getter para o valor
     public T getValue() {
         return value;
@@ -33,13 +51,13 @@ public class Node<T extends Comparable<T>> {
         return right;
     }
 
+    // Método toString
     public String toString() {
         return value.toString();
     }
 
+    // Método compareTo
     public int compareTo(Node<T> otherNode) {
-        //provide implementation here
-        //See effective java for appropriate implementation conditions
         return this.value.compareTo(otherNode.value);
     }
 }
